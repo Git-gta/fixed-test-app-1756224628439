@@ -1,0 +1,14 @@
+{
+  "name": "fixed-test-app",
+  "version": "1.0.0",
+  "description": "Testing the repository name fix to ensure files are pushed to GitHub",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "deploy": "gh-pages -d ."
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "serve": "^14.0.0"
+  }
+}
