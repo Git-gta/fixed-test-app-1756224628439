@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Test App - API Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto py-8 px-4">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <h1 class="text-3xl font-bold mb-6">Fixed Test App - Live API Demo</h1>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- API Testing -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Test API Endpoints</h2>
+                    
+                    <div class="space-y-4">
+                        <button onclick="testAPI('/api/users')" 
+                                class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+                            GET /api/users
+                        </button>
+                        
+                        <button onclick="testAPI('/api/projects')" 
+                                class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">
+                            GET /api/projects
+                        </button>
+                        
+                        <button onclick="createData()" 
+                                class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600">
+                            POST /api/projects
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- API Response -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">API Response</h2>
+                    <div id="apiResponse" class="bg-gray-100 p-4 rounded-lg h-64 overflow-y-auto font-mono text-sm">
+                        Click a button to test the API...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mock API responses for demo
+        const mockResponses = {
+            '/api/users': {
+                data: [
+                    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
+                    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'user' },
+                    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'user' }
+                ],
+                count: 3,
+                timestamp: new Date().toISOString()
+            },
+            '/api/projects': {
+                data: [
+                    { id: 1, name: 'Website Redesign', status: 'active', progress: 75 },
+                    { id: 2, name: 'Mobile App', status: 'planning', progress: 25 },
+                    { id: 3, name: 'API Integration', status: 'completed', progress: 100 }
+                ],
+                count: 3,
+                timestamp: new Date().toISOString()
+            }
+        };
+        
+        function testAPI(endpoint) {
+            const response = mockResponses[endpoint] || { error: 'Endpoint not found' };
+            
+            document.getElementById('apiResponse').innerHTML = 
+                `<div class="text-green-600 mb-2">HTTP 200 OK</div>` +
+                `<pre>${JSON.stringify(response, null, 2)}</pre>`;
+        }
+        
+        function createData() {
+            const newProject = {
+                id: Date.now(),
+                name: 'New Generated Project',
+                status: 'active',
+                progress: 0,
+                created: new Date().toISOString()
+            };
+            
+            document.getElementById('apiResponse').innerHTML = 
+                `<div class="text-blue-600 mb-2">HTTP 201 Created</div>` +
+                `<pre>${JSON.stringify(newProject, null, 2)}</pre>`;
+        }
+    </script>
+</body>
+</html>
