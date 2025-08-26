@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Test App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6, #10b981);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">Fixed Test App</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showSection('dashboard')" class="text-gray-600 hover:text-gray-900">Dashboard</button>
+                    <button onclick="showSection('features')" class="text-gray-600 hover:text-gray-900">Features</button>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Section -->
+    <section id="landing" class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-5xl font-bold mb-6">This is a simple application created to test the repository name fix and ensure that files are properly pushed to GitHub.</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Repository Name Fixing • File Pushing Verification
+            </p>
+            <div class="flex gap-4 justify-center">
+                <button onclick="showSection('dashboard')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">
+                    Try Dashboard
+                </button>
+                <button onclick="showSection('demo')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600">
+                    View Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="py-12 hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-8">Interactive Dashboard</h3>
+            
+            <!-- Stats Cards -->
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Users</p>
+                            <p class="text-2xl font-bold" x-data="{ count: 0 }" x-init="setInterval(() => count < 2840 ? count += 23 : null, 50)" x-text="count.toLocaleString()">0</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Revenue</p>
+                            <p class="text-2xl font-bold" x-data="{ count: 0 }" x-init="setInterval(() => count < 45231 ? count += 127 : null, 10)" x-text="'$' + count.toLocaleString()">$0</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Active Projects</p>
+                            <p class="text-2xl font-bold" x-data="{ count: 0 }" x-init="setInterval(() => count < 156 ? count += 3 : null, 100)" x-text="count">0</p>
+                        </div>
+                        <div class="bg-yellow-100 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Growth Rate</p>
+                            <p class="text-2xl font-bold text-green-500">+24.5%</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chart -->
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h4 class="text-lg font-semibold mb-4">Performance Overview</h4>
+                <canvas id="performanceChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Powerful Features</h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Repository Name Fixing</h4>
+                    <p class="text-gray-600">Advanced repository name fixing functionality with real-time updates and powerful analytics.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">File Pushing Verification</h4>
+                    <p class="text-gray-600">Advanced file pushing verification functionality with real-time updates and powerful analytics.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-12 bg-gray-100 hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Live Demo</h3>
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg" x-data="{ 
+                tasks: [
+                    { id: 1, title: 'Setup project', done: true },
+                    { id: 2, title: 'Design interface', done: true },
+                    { id: 3, title: 'Implement features', done: false },
+                    { id: 4, title: 'Deploy to production', done: false }
+                ],
+                newTask: ''
+            }">
+                <h4 class="text-xl font-semibold mb-6">Interactive Task Manager Demo</h4>
+                
+                <!-- Add Task -->
+                <div class="flex gap-4 mb-6">
+                    <input x-model="newTask" type="text" placeholder="Add a new task..." 
+                           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           @keyup.enter="if(newTask.trim()) { tasks.push({ id: Date.now(), title: newTask, done: false }); newTask = ''; }">
+                    <button @click="if(newTask.trim()) { tasks.push({ id: Date.now(), title: newTask, done: false }); newTask = ''; }"
+                            class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+                        Add Task
+                    </button>
+                </div>
+                
+                <!-- Tasks List -->
+                <div class="space-y-3">
+                    <template x-for="task in tasks" :key="task.id">
+                        <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg">
+                            <input type="checkbox" x-model="task.done" class="w-5 h-5 text-blue-500">
+                            <span x-text="task.title" :class="task.done ? 'line-through text-gray-500' : ''"></span>
+                            <button @click="tasks = tasks.filter(t => t.id !== task.id)" 
+                                    class="ml-auto text-red-500 hover:text-red-700">
+                                Delete
+                            </button>
+                        </div>
+                    </template>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">
+                        <span x-text="tasks.filter(t => t.done).length"></span> of <span x-text="tasks.length"></span> tasks completed
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h4 class="text-lg font-semibold mb-2">Fixed Test App</h4>
+            <p class="text-gray-400">This is a simple application created to test the repository name fix and ensure that files are properly pushed to GitHub.</p>
+            <p class="text-gray-500 text-sm mt-4">© 2024 Generated by Go To Factory</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            ['landing', 'dashboard', 'features', 'demo'].forEach(name => {
+                document.getElementById(name).classList.add('hidden');
+            });
+            
+            // Show target section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Initialize chart if dashboard
+            if (sectionName === 'dashboard') {
+                setTimeout(() => initChart(), 100);
+            }
+        }
+        
+        // Chart initialization
+        function initChart() {
+            const ctx = document.getElementById('performanceChart');
+            if (ctx && !ctx.chart) {
+                ctx.chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Revenue',
+                            data: [12000, 19000, 15000, 25000, 22000, 30000],
+                            borderColor: '#3b82f6',
+                            tension: 0.4,
+                            fill: true,
+                            backgroundColor: '#3b82f620'
+                        }, {
+                            label: 'Users',
+                            data: [1200, 1900, 1500, 2200, 2500, 2800],
+                            borderColor: '#10b981',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'top' }
+                        },
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Auto-refresh data simulation
+        setInterval(() => {
+            const elements = document.querySelectorAll('[x-data]');
+            // Trigger Alpine.js reactivity for live updates
+        }, 5000);
+    </script>
+</body>
+</html>
